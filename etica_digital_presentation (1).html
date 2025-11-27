@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ética Digital / Digital Ethics</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow: hidden;
+        }
+        
+        .slide-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .slide {
+            width: 960px;
+            height: 720px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 40px;
+            display: none;
+            flex-direction: column;
+            position: relative;
+            overflow-y: auto;
+        }
+        
+        .slide.active {
+            display: flex;
+            animation: slideIn 0.5s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        h1 {
+            color: #667eea;
+            font-size: 42px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        h2 {
+            color: #764ba2;
+            font-size: 32px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        h3 {
+            color: #667eea;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        
+        p, li {
+            color: #333;
+            font-size: 17px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+        
+        ul {
+            margin-left: 25px;
+        }
+        
+        .authors {
+            text-align: center;
+            font-size: 22px;
+            color: #555;
+            margin-top: 30px;
+            font-weight: 600;
+        }
+        
+        .subtitle {
+            text-align: center;
+            font-size: 19px;
+            color: #666;
+            font-style: italic;
+            margin-top: 15px;
+        }
+        
+        .controls {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-weight: 600;
+        }
+        
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .slide-counter {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: rgba(255,255,255,0.9);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #667eea;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #ffd93d 0%, #ffb347 100%);
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+        
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 15px;
+        }
+        
+        .icon {
+            font-size: 40px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-counter">
+        <span id="current">1</span> / <span id="total">12</span>
+    </div>
+    
+    <div class="slide-container">
+        <!-- Slide 1: Portada -->
+        <div class="slide active">
+            <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                <h1>ÉTICA DIGITAL</h1>
+                <h1 style="font-size: 42px;">DIGITAL ETHICS</h1>
+                <div class="subtitle">Navegando el Mundo Digital con Responsabilidad</div>
+                <div class="subtitle" style="font-size: 20px;">Navigating the Digital World Responsibly</div>
+                <div class="authors">
+                    Victor Villegas Aguilar<br>
+                    Jesús Leonardo Lugo Centeno
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 2: ¿Qué es la Ética Digital? -->
+        <div class="slide">
+            <h2>¿Qué es la Ética Digital? / What is Digital Ethics?</h2>
+            <div class="two-column">
+                <div>
+                    <h3>🇪🇸 Español</h3>
+                    <p>La <span class="highlight">ética digital</span> es el conjunto de principios morales y valores que guían nuestro comportamiento en el entorno digital.</p>
+                    <p>Incluye cómo usamos la tecnología, compartimos información y nos relacionamos con otros en línea de manera responsable y respetuosa.</p>
+                </div>
+                <div>
+                    <h3>🇬🇧 English</h3>
+                    <p><span class="highlight">Digital ethics</span> is the set of moral principles and values that guide our behavior in the digital environment.</p>
+                    <p>It includes how we use technology, share information, and interact with others online in a responsible and respectful manner.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 3: Principios Fundamentales -->
+        <div class="slide">
+            <h2>Principios Fundamentales / Core Principles</h2>
+            <div class="two-column">
+                <div>
+                    <h3>🇪🇸 Español</h3>
+                    <ul>
+                        <li><strong>Privacidad:</strong> Proteger datos personales</li>
+                        <li><strong>Transparencia:</strong> Ser honesto en línea</li>
+                        <li><strong>Responsabilidad:</strong> Asumir consecuencias</li>
+                        <li><strong>Respeto:</strong> Dignidad hacia otros</li>
+                        <li><strong>Equidad:</strong> Acceso justo a tecnología</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>🇬🇧 English</h3>
+                    <ul>
+                        <li><strong>Privacy:</strong> Protect personal data</li>
+                        <li><strong>Transparency:</strong> Be honest online</li>
+                        <li><strong>Accountability:</strong> Accept consequences</li>
+                        <li><strong>Respect:</strong> Dignity towards others</li>
+                        <li><strong>Equity:</strong> Fair access to technology</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 4: Privacidad y Protección de Datos -->
+        <div class="slide">
+            <h2>Privacidad y Protección de Datos / Privacy & Data Protection</h2>
+            <div class="icon">🔒</div>
+            <div class="two-column">
+                <div>
+                    <h3>🇪🇸 Consejos</h3>
+                    <ul>
+                        <li>Usa contraseñas seguras</li>
+                        <li>Revisa configuraciones de privacidad</li>
+                        <li>No compartas información sensible</li>
+                        <li>Verifica permisos de aplicaciones</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>🇬🇧 Tips</h3>
+                    <ul>
+                        <li>Use strong passwords</li>
+                        <li>Review privacy settings</li>
+                        <li>Don't share sensitive information</li>
+                        <li>Check app permissions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 5: Ciudadanía Digital -->
+        <div class="slide">
+            <h2>Ciudadanía Digital / Digital Citizenship</h2>
+            <div class="icon">👥</div>
+            <div class="two-column">
+                <div>
+                    <h3>🇪🇸 Ser un buen ciudadano digital</h3>
+                    <ul>
+                        <li>Pensar antes de publicar</li>
+                        <li>Respetar opiniones diferentes</li>
+                        <li>Combatir el ciberacoso</li>
+                        <li>Verificar información antes de compartir</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>🇬🇧 Being a good digital citizen</h3>
+                    <ul>
+                        <li>Think before posting</li>
+                        <li>Respect different opinions</li>
+                        <li>Combat cyberbullying</li>
+                        <li>Verify information before sharing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 6: Desinformación y Fake News -->
+        <div class="slide">
+            <h2>Desinformación / Misinformation</h2>
+            <div class="icon">⚠️</div>
+            <div class="two-column">
+                <div>
+                    <h3>🇪🇸 Cómo identificar noticias falsas</h3>
+                    <ul>
+                        <li>Verifica la fuente</li>
+                        <li>Busca múltiples perspectivas</li>
+                        <li>Revisa la fecha de publicación</li>
+                        <li>Analiza el tono y lenguaje</li>
+                        <li>Usa herramientas de verificación</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>🇬🇧 How to identify fake news</h3>
+                    <ul>
+                        <li>Verify the source</li>
+                        <li>Look for multiple perspectives</li>
+                        <li>Check publication date</li>
+                        <li>Analyze tone and language</li>
+                        <li>Use fact-checking tools</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 7: Inteligencia Artificial y Ética -->
+        <div class="slide">
+            <h2>IA y Ética / AI & Ethics</h2>
+            <div class="icon">🤖</div>
+            <div class="two-column">
+                <div>
+                    <h3>🇪🇸 Desafíos éticos de la IA</h3>
+                    <ul>
+                        <li>Sesgo algorítmico</li>
+                        <li>Toma de decisiones automatizada</li>
+                        <li>Transparencia en sistemas IA</li>
+                        <li>Impacto en el empleo</li>
+                        <li>Uso responsable de datos</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>🇬🇧 Ethical challenges of AI</h3>
+                    <ul>
+                        <li>Algorithmic bias</li>
+                        <li>Automated decision-making</li>
+                        <li>Transparency in AI systems</li>
+                        <li>Impact on employment</li>
+                        <li>Responsible data usage</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 8: Propiedad Intelectual -->
+        <div class="slide">
+            <h2>Propiedad Intelectual / Intellectual Property</h2>
+            <div class="icon">©️</div>
+            <div class="two-column">
+                <div>
+                    <h3>🇪🇸 Respeta los derechos de autor</h3>
+                    <ul>
+                        <li>No plagies contenido</li>
+                        <li>Da crédito a los creadores</li>
+                        <li>Usa licencias Creative Commons</li>
+                        <li>Respeta los derechos digitales</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>🇬🇧 Respect copyright</h3>
+                    <ul>
+                        <li>Don't plagiarize content</li>
+                        <li>Give credit to creators</li>
+                        <li>Use Creative Commons licenses</li>
+                        <li>Respect digital rights</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 9: Redes Sociales Responsables -->
+        <div class="slide">
+            <h2>Redes Sociales / Social Media</h2>
+            <div class="icon">📱</div>
+            <div class="two-column">
+                <div>
+                    <h3>🇪🇸 Uso responsable</h3>
+                    <ul>
+                        <li>Cuida tu huella digital</li>
+                        <li>Gestiona tu tiempo en línea</li>
+                        <li>Evita la adicción digital</li>
+                        <li>Protege tu salud mental</li>
+                        <li>Sé auténtico y respetuoso</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>🇬🇧 Responsible use</h3>
+                    <ul>
+                        <li>Mind your digital footprint</li>
+                        <li>Manage your online time</li>
+                        <li>Avoid digital addiction</li>
+                        <li>Protect your mental health</li>
+                        <li>Be authentic and respectful</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 10: Seguridad Digital -->
+        <div class="slide">
+            <h2>Seguridad Digital / Digital Security</h2>
+            <div class="icon">🛡️</div>
+            <div class="two-column">
+                <div>
+                    <h3>🇪🇸 Protégete en línea</h3>
+                    <ul>
+                        <li>Usa autenticación de dos factores</li>
+                        <li>Mantén software actualizado</li>
+                        <li>Cuidado con phishing</li>
+                        <li>Usa redes seguras</li>
+                        <li>Haz copias de seguridad</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>🇬🇧 Protect yourself online</h3>
+                    <ul>
+                        <li>Use two-factor authentication</li>
+                        <li>Keep software updated</li>
+                        <li>Beware of phishing</li>
+                        <li>Use secure networks</li>
+                        <li>Make backups</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 11: Brecha Digital -->
+        <div class="slide">
+            <h2>Brecha Digital / Digital Divide</h2>
+            <div class="icon">🌍</div>
+            <div class="two-column">
+                <div>
+                    <h3>🇪🇸 Inclusión Digital</h3>
+                    <p>La brecha digital es la desigualdad en el acceso a tecnología y habilidades digitales.</p>
+                    <p><strong>Soluciones:</strong></p>
+                    <ul>
+                        <li>Educación digital para todos</li>
+                        <li>Acceso equitativo a internet</li>
+                        <li>Tecnología accesible</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>🇬🇧 Digital Inclusion</h3>
+                    <p>The digital divide is inequality in access to technology and digital skills.</p>
+                    <p><strong>Solutions:</strong></p>
+                    <ul>
+                        <li>Digital education for all</li>
+                        <li>Equal internet access</li>
+                        <li>Accessible technology</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 12: Conclusión -->
+        <div class="slide">
+            <h2>Conclusión / Conclusion</h2>
+            <div class="two-column">
+                <div>
+                    <h3>🇪🇸 Reflexión Final</h3>
+                    <p>La ética digital no es opcional, es esencial para construir un mundo digital más justo, seguro y respetuoso.</p>
+                    <p><strong>Cada acción cuenta.</strong> Seamos agentes de cambio positivo en el entorno digital.</p>
+                    <p style="text-align: center; margin-top: 30px; font-size: 24px; color: #667eea;">💡 ¡Gracias!</p>
+                </div>
+                <div>
+                    <h3>🇬🇧 Final Reflection</h3>
+                    <p>Digital ethics is not optional, it's essential to build a fairer, safer, and more respectful digital world.</p>
+                    <p><strong>Every action matters.</strong> Let's be agents of positive change in the digital environment.</p>
+                    <p style="text-align: center; margin-top: 30px; font-size: 24px; color: #667eea;">💡 Thank you!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="controls">
+        <button id="prev" onclick="previousSlide()">◀ Anterior / Previous</button>
+        <button id="next" onclick="nextSlide()">Siguiente / Next ▶</button>
+    </div>
+    
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        
+        document.getElementById('total').textContent = totalSlides;
+        
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            
+            document.getElementById('current').textContent = currentSlide + 1;
+            
+            document.getElementById('prev').disabled = currentSlide === 0;
+            document.getElementById('next').disabled = currentSlide === totalSlides - 1;
+        }
+        
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                showSlide(currentSlide + 1);
+            }
+        }
+        
+        function previousSlide() {
+            if (currentSlide > 0) {
+                showSlide(currentSlide - 1);
+            }
+        }
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') previousSlide();
+        });
+        
+        document.getElementById('prev').disabled = true;
+    </script>
+</body>
+</html>
